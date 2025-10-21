@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Somalia Website</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #0d6efd;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #bbd0ff;
+      color: #0d3a7d;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Home Section */
+    #home {
+      position: relative;
+      height: 60vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+      margin-bottom: 3rem;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 110, 253, 0.55);
+      border-radius: 16px;
+      z-index: 0;
+    }
+
+    #home .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    #home h1 {
+      font-size: 3.8rem;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+
+    #home p {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    /* Services */
+    #services h2 {
+      text-align: center;
+      color: #0d6efd;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+    }
+
+    .service-item {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(13, 110, 253, 0.25);
+    }
+
+    .service-item img {
+      max-width: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .service-item h3 {
+      margin-bottom: 1rem;
+      color: #0d6efd;
+      font-size: 1.5rem;
+    }
+
+    .service-item p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* About */
+    #about {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+      margin-top: 3rem;
+      text-align: center;
+      color: #212529;
+    }
+
+    #about h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
+
+    #about p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    /* Contact */
+    #contact {
+      margin-top: 3rem;
+      padding-bottom: 4rem;
+    }
+
+    #contact h2 {
+      text-align: center;
+      color: #0d6efd;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    #contact-info {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #444;
+      font-weight: 600;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 0 1rem;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #ced4da;
+      border-radius: 10px;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0d6efd;
+      outline: none;
+      box-shadow: 0 0 6px #0d6efdaa;
+    }
+
+    button {
+      padding: 1.1rem;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0846b9;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1rem;
+      }
+
+      #home h1 {
+        font-size: 2.8rem;
+      }
+
+      #home p {
+        font-size: 1.2rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Somalia</div>
+    <ul>
+      <li><a href="#home" tabindex="1">Home</a></li>
+      <li><a href="#services" tabindex="2">Services</a></li>
+      <li><a href="#about" tabindex="3">About</a></li>
+      <li><a href="#contact" tabindex="4">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" aria-label="Home">
+    <div class="content">
+      <h1>Welcome to Somalia's Website</h1>
+      <p>Your trusted partner for excellent services.</p>
+    </div>
+  </section>
+
+  <section id="services" aria-label="Services">
+    <h2>Our Services</h2>
+    <div class="services-list">
+      <div class="service-item" tabindex="5">
+        <img src="https://img.icons8.com/ios-filled/100/0d6efd/consulting.png" alt="Consulting Icon" />
+        <h3>Consulting</h3>
+        <p>Professional advice tailored to your business needs.</p>
+      </div>
+      <div class="service-item" tabindex="6">
+        <img src="https://img.icons8.com/ios-filled/100/0d6efd/code.png" alt="Development Icon" />
+        <h3>Development</h3>
+        <p>High-quality software development solutions.</p>
+      </div>
+      <div class="service-item" tabindex="7">
+        <img src="https://img.icons8.com/ios-filled/100/0d6efd/customer-support.png" alt="Support Icon" />
+        <h3>Support</h3>
+        <p>Reliable customer support around the clock.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" aria-label="About Us">
+    <h2>About Us</h2>
+    <p>
+      Somalia is dedicated to providing exceptional services to clients worldwide.
+      With years of experience and a commitment to excellence, we strive to meet and exceed expectations.
+    </p>
+  </section>
+
+  <section id="contact" aria-label="Contact Us">
+    <h2>Contact Us</h2>
+    <div id="contact-info">
+      <p><strong>Name:</strong> Somalia</p>
+      <p><strong>Phone Number:</strong> 6777777</p>
+    </div>
+    <form>
+      <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message" aria-label="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+</body>
+</html>
